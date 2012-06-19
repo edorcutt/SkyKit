@@ -2,9 +2,15 @@ ruleset a169x610 {
 	meta {
 		name "SkyKit"
 		description <<
-			Kynetx Sky Event API Toolkit
+Kynetx Sky Event API Toolkit. This Kynetx module provides a toolkit for the Sky Event API
 
-			use module a169x610 alias SkyKit
+use module a169x610 alias SkyKit
+
+Actions
+
+raise_delegate(<event type>, <event channel identifer>)
+
+Raise a Sky event into a Personal Cloud and evaluate the Javascript that is generated.
 		>>
 
 		provides raise_delegate
