@@ -6,6 +6,6 @@ This Kynetx module provides a toolkit for the [Sky Event API](http://developer.k
 Actions
 -------
 
-### raise_delegate(<event type>, <event channel identifer>)
+### raise_delegate(\<event type\>, \<event channel identifer\>)
 
 Raise a Sky event into a Personal Cloud and evaluate the Javascript that is generated.
