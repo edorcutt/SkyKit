@@ -20,3 +20,7 @@ Actions
 ### raise_delegate(\<event type\>, \<event channel identifer\>)
 
 Raise a Sky event into a Personal Cloud and evaluate the Javascript that is generated.
+
+### watch_submit(\<selector\>, \<event channel identifier\>)
+
+Sets a submit watch on the \<selector\> item in the current page. When the user performs a form submit and event will be fired for the submit in the web domain. \<selector\> is a jQuery selector such as (#formFoo).
