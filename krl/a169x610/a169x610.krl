@@ -13,7 +13,7 @@ raise_delegate(<event type>, <event channel identifer>)
 Raise a Sky event into a Personal Cloud and evaluate the Javascript that is generated.
 		>>
 
-		provides raise_delegate
+		provides raise_delegate, watch_submit
 
 		author "Ed Orcutt"
 		logging off
@@ -43,6 +43,38 @@ Raise a Sky event into a Personal Cloud and evaluate the Javascript that is gene
 			>>;
 			}
 		};
+
+		// --------------------------------------------
+		watch_submit = defaction(form, token) {
+		  _form  = form;
+			_token = token;
+			{
+		    emit <<
+				  $K(_form).unbind('submit').submit(function(event) {
+					  event.preventDefault();
+
+					  var dom  = 'web';
+						var type = 'submit';
+						var eid  = Math.floor(Math.random()*9999999);
+						var attr = $K(this).serialize();
+
+						var esl = 'http://cs.kobj.net/sky/event/' +
+						          _token + '/' + 	eid + '/' +
+											dom + '/' +	type + '?' + attr +
+											'&element=' + encodeURIComponent(_form);
+	  		    var r = document.createElement('script');
+		  		  r.src = esl;
+			  	  r.type = 'text/javascript';
+				    r.onload = r.onreadystatechange = KOBJ.url_loaded_callback;
+  				  var body = document.getElementsByTagName('body')[0] ||
+                       document.getElementsByTagName('frameset')[0];
+  				  body.appendChild(r);
+						//return false;
+					});
+			  >>;
+			}
+		};
+
 	}
 
   // ------------------------------------------------------------------------
